@@ -21,7 +21,7 @@
 [h2]Встановлення (Steam)[/h2]
 [olist]
 [*] Закрийте гру.
-[*] Завантажте Starfield_UA_Setup_[версія].exe: [url=ПОСИЛАННЯ]ПОСИЛАННЯ НА ЗАВАНТАЖЕННЯ[/url]
+[*] Завантажте Starfield_UA_Setup_[версія].exe: [url=https://github.com/livonianlabs/starfield-ukrainian/releases]https://github.com/livonianlabs/starfield-ukrainian/releases[/url]
 [*] Запустіть, перевірте вибір «Герой / Героїня» → «Встановити».
 [*] Запустіть гру — мова вже українська.
 [/olist]
