@@ -145,11 +145,18 @@ def main():
         write_strings(os.path.join(sdir, name), read_bethesda_strings(p, ext != "STRINGS"), ext != "STRINGS")
 
     # інтерфейс
-    lines = []
-    for u in ET.parse(os.path.join(WORK, "xliff", "interface", "translate_en.xliff")).iter(X + "trans-unit"):
-        g = u.find(X + "target")
-        tgt = "".join(g.itertext()) if g is not None else ""
-        lines.append(u.get("id") + "\t" + (tgt or "".join(u.find(X + "source").itertext())))
+    # ключі - з поточної гри (translate_en.txt), переклад: спільнота > iface_bot > англійська
+    import iface_bot
+    com, bot = iface_bot.community(), iface_bot.results()
+    en = iface_bot.read_txt(iface_bot.EN_TXT) if os.path.exists(iface_bot.EN_TXT) else {k: v[0] for k, v in com.items()}
+    # ручні правки за тестом у грі: не влазять у вузькі клітинки
+    fixed = {"$MainKey": "Основна", "$AltKey": "Додаткова", "$SETTINGS": "ПАРАМЕТРИ",
+             "$LocationCleared": "[ЗАЧИЩЕНО]", "$LockedContainer": "[ЗАМКНЕНО]", "$Settings_NvidiaReflex": "NVIDIA Reflex (низька затримка)",
+             "$OPTIONS": "ПАРАМЕТРИ", "$Options": "ПАРАМЕТРИ", "$Total XP": "Досвід",
+             "$Settings_VehicleThirdPersonCameraFOVOffset": "Кут огляду транспорту (3-тя особа)",
+             "$Settings_VehicleFirstPersonCameraFOVOffset": "Кут огляду транспорту (1-ша особа)"}
+    lines = [k + "\t" + (fixed.get(k) or com.get(k, ("", ""))[1] or bot.get(k) or v) for k, v in en.items()]
+    lines += [k + "\t" + v[1] for k, v in com.items() if k not in en and v[1]]   # старі ключі не шкодять
     with open(os.path.join(idir, "translate_uk.txt"), "w", encoding="utf-16", newline="\r\n") as f:
         f.write("\n".join(lines) + "\n")
     for fn in ("fonts_uk.gfx", "fonts_uk.swf"):

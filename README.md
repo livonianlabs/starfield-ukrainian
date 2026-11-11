@@ -44,7 +44,7 @@ sResourceDataDirsFinal=
 
 ## Інструменти (`tools/`)
 
-Python-скрипти, якими зібрано переклад: читання/запис рядків Bethesda (`.STRINGS/.DLSTRINGS/.ILSTRINGS`) і BA2, переклад залишку через Claude Code (`translate_bot.py`, `dlc_bot.py`), визначення мовця з ESM для жіночої версії (`esm_speakers.py`, `gender_bot.py`), виправлення артефактів (`fix_junk.py`), збирання гри й інсталятора Inno Setup (`build_game.py`, `build_release.py`, `installer.iss`).
+Python-скрипти, якими зібрано переклад: читання/запис рядків Bethesda (`.STRINGS/.DLSTRINGS/.ILSTRINGS`) і BA2, переклад залишку через Claude Code (`translate_bot.py`, `dlc_bot.py`, `iface_bot.py` — нові ключі інтерфейсу з поточної версії гри), визначення мовця з ESM для жіночої версії (`esm_speakers.py`, `gender_bot.py`), виправлення артефактів (`fix_junk.py`), збирання гри й інсталятора Inno Setup (`build_game.py`, `build_release.py`, `installer.iss`).
 
 ## Подяки
 
