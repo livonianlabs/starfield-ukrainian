@@ -4,6 +4,8 @@
 
 **[⬇ Завантажити останню версію](https://github.com/livonianlabs/starfield-ukrainian/releases)** — `Starfield-UA-<версія>-setup.exe` (інсталятор) або `.zip` (вручну).
 
+Посібник у Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3838134802
+
 > Статус: **бета (0.9)** — увесь текст перекладено, триває вичитка в грі. Помилки — в [Issues](../../issues).
 
 ## Особливості
