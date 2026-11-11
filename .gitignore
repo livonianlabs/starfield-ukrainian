@@ -1,0 +1,5 @@
+work/
+__pycache__/
+*.exe
+*.zip
+dist/
