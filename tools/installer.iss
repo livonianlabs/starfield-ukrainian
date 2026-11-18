@@ -34,6 +34,8 @@ Name: "uk"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 
 [Messages]
 uk.WelcomeLabel2=Буде встановлено український переклад Starfield (версія {#AppVersion}).%n%nФайли копіюються в Документи\My Games\Starfield\Data, а в StarfieldCustom.ini вмикається українська мова. Саму гру не змінено.%n%nПеред встановленням закрийте гру.
+uk.FinishedLabel=Український переклад встановлено. Запустіть Starfield — мова вже українська.%n%nПовернути оригінал: Пуск → «Starfield UA — повернути оригінал (видалити переклад)».
+uk.FinishedLabelNoIcons=Український переклад встановлено. Запустіть Starfield — мова вже українська.
 uk.SelectDirLabel3=Папка налаштувань Starfield у «Документах». Змінюйте лише якщо «Документи» у вас в іншому місці.
 
 #ifndef Fem

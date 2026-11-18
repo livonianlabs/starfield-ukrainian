@@ -9,7 +9,7 @@ BOT = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(BOT)
 DIST = os.path.join(ROOT, "dist")
 ISCC = os.path.expandvars(r"%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe")
-VERSION = "0.9." + dt.date.today().strftime("%Y%m%d")
+VERSION = "0.9.1"   # міняти вручну при кожному випуску (GitHub, Nexus, інсталятор)
 
 README = """Starfield — українська локалізація, версія {v}
 

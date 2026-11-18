@@ -7,7 +7,7 @@
   ..\\Female\\Strings/Starfield_uk.ILSTRINGS|DLSTRINGS  - жіноча версія (результати gender_bot.py)
 
 Пріоритет для кожного рядка: людський переклад -> бот -> стара машинна чернетка (0.87) -> англійська.
-  python build_game.py [--no-draft]   (--no-draft: замість чернетки 0.87 лишати англійську)
+  python build_game.py [--no-draft]   (--no-draft: без тексту моду 0.87/8307 і без змін його fontconfig - для Nexus)
 """
 import argparse, glob, json, os, re, shutil, struct, sys
 import xml.etree.ElementTree as ET
@@ -93,7 +93,7 @@ def main():
                     table[sid], k = src, "english"
                 table[sid] = unescape(table[sid]) if k != "draft" else table[sid]
                 stat[k] += 1
-        extra = {sid: s for sid, s in draft.items() if sid not in table}   # ID, яких немає в XLIFF
+        extra = {} if a.no_draft else {sid: s for sid, s in draft.items() if sid not in table}   # ID, яких немає в XLIFF
         table.update(extra)
         # нові рядки з оновлень гри (немає в XLIFF) і залишки англійською -> dlc_bot, інакше англійський оригінал
         gen = os.path.join(dlc_bot.GEN, f"starfield_en.{ext.lower()}")
@@ -125,7 +125,7 @@ def main():
         dl = ext != "STRINGS"
         t = read_bethesda_strings(gp, dl)
         dq = dlc_bot.find_ci(os.path.join(MOD, "strings"), f"{plug}_uk.{ext}")
-        if dq:
+        if dq and not a.no_draft:
             t.update({k: v for k, v in read_bethesda_strings(dq, dl).items() if k in t and CYR.search(v)})
         res = dlc.get((plug.lower(), ext), {})
         t.update({k: v for k, v in res.items() if k in t})
@@ -139,7 +139,7 @@ def main():
         print(f"{plug}_uk.{ext.lower()}: {len(t)} strings, bot {len(res)}")
     for p in glob.glob(os.path.join(MOD, "strings", "*")):   # плагіни, яких немає в архівах гри - як у 0.87
         name = os.path.basename(p)
-        if name.lower().startswith("starfield_uk.") or name.lower() in done:
+        if a.no_draft or name.lower().startswith("starfield_uk.") or name.lower() in done:
             continue
         ext = name.rsplit(".", 1)[1].upper()
         write_strings(os.path.join(sdir, name), read_bethesda_strings(p, ext != "STRINGS"), ext != "STRINGS")
@@ -162,7 +162,8 @@ def main():
     for fn in ("fonts_uk.gfx", "fonts_uk.swf"):
         shutil.copy(os.path.join(MOD, "interface", fn), idir)
     fc = open(os.path.join(MOD, "interface", "fontconfig_uk.txt"), "rb").read().decode("utf-8")
-    fc = fc.replace("Яя\"", "ЯяҐґ\"")   # дозволити Ґґ в іменах і книгах
+    if not a.no_draft:   # --no-draft: файл моду 8307 без змін (їхні дозволи забороняють модифікацію)
+        fc = fc.replace("Яя\"", "ЯяҐґ\"")   # дозволити Ґґ в іменах і книгах
     open(os.path.join(idir, "fontconfig_uk.txt"), "wb").write(fc.encode("utf-8"))
     print("interface:", len(lines), "keys ->", DIST)
 
