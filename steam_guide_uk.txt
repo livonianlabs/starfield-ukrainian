@@ -22,6 +22,7 @@
 [olist]
 [*] Закрийте гру.
 [*] Завантажте Starfield_UA_Setup_[версія].exe: [url=https://github.com/livonianlabs/starfield-ukrainian/releases]https://github.com/livonianlabs/starfield-ukrainian/releases[/url]
+або з Nexus Mods: [url=https://www.nexusmods.com/starfield/mods/18855]https://www.nexusmods.com/starfield/mods/18855[/url]
 [*] Запустіть, перевірте вибір «Герой / Героїня» → «Встановити».
 [*] Запустіть гру — мова вже українська.
 [/olist]
